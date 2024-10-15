@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${pageTitle}">Default Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<header th:fragment="headerFragment">
+  <nav class="navbar">
+    <div class="contenido">
+      <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/}">Proyectos</a></li>
+        <li><a th:href="@{/}">Contacto</a></li>
+        <li><a th:href="@{/}">Mi cuenta</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+</body>
+</html>
+
+<!DOCTYPE html>
