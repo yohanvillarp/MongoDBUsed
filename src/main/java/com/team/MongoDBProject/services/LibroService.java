@@ -5,6 +5,7 @@ import com.team.MongoDBProject.repository.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,6 +18,17 @@ public class LibroService {
             System.out.println(libros.size());
         return libros;
     }
+
+    public List<Libro> getLibrosDestacados(){
+        List<Libro> destacado = new ArrayList<>();
+        for(Libro libro: libroRepository.findAll()){
+            if(libro.esDestacado())
+                destacado.add(libro);
+        }
+        System.out.println(destacado.size()+" <-- Nro de libros destacados");
+        return destacado;
+    }
+
     public void addLibro(Libro libro){
         libroRepository.save(libro);
     }

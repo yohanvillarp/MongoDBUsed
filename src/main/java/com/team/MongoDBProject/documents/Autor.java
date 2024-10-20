@@ -15,5 +15,6 @@ public record Autor(
         String biografia,
         String rutaPortada,
         String sitioWeb,
-        String email
+        String email,
+        boolean esDestacado
 ) {}

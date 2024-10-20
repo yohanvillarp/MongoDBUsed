@@ -39,4 +39,8 @@ public class LibroController {
         return libroService.buscarPorNombre(query);
     }
 
+    @GetMapping("/details")
+    public String detailsLibro(){
+        return "/details/detailsLibro";
+    }
 }

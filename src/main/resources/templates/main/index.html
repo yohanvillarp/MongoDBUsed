@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/fragments/header.css">
+    <link rel="stylesheet" href="/css/main/index.css">
+    <title>Librería</title>
+</head>
+
+<body>
+
+<!--Header -->
+<div th:insert="~{fragments/header :: headerFragment}"></div>
+
+<main>
+
+    <h2>Libros más destacados</h2>
+    <!-- Contenedor de libros -->
+    <div class="carousel-libros">
+        <div class="slider-inner">
+            <!-- Iteración de libros -->
+            <div class="slide" th:each="libroDestacado : ${librosDestacados}">
+                <div class="izquierda">
+                    <div class="imagen">
+                        <img th:src="${libroDestacado.rutaPortada}"  th:alt="${libroDestacado.nombre}" width="">
+                    </div>
+                </div>
+                <div class="derecha">
+                    <h2 th:text="${libroDestacado.nombre}">Título Libro</h2>
+                    <div class="descripcion">
+                        <p th:text="${libroDestacado.descripcion}">
+                            Descripción del libro.
+                        </p>
+                    </div>
+                    <div class="boton">
+                        <a class="btn-personalizado" th:href="@{/libros/details}">
+                            Revisar Libro
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Autores más destacados</h2>
+    <!-- Contenedor de autores -->
+    <div class="carousel-autores">
+        <div class="slider-inner">
+            <!-- Iteración de autores -->
+            <div class="slide" th:each="autorDestacado : ${autoresDestacados}">
+                <div class="izquierda">
+                    <div class="imagen">
+                        <img th:src="${autorDestacado.rutaPortada}" th:alt="${autorDestacado.nombres}">
+                    </div>
+                </div>
+                <div class="derecha">
+                    <h2 th:text="${autorDestacado.nombres} +' '+${autorDestacado.apellidos} ">Nombre Autor</h2>
+                    <div class="descripcion">
+                        <p th:text="${autorDestacado.biografia}">
+                            Descripción del autor.
+                        </p>
+                    </div>
+                    <div class="boton">
+                        <a class="btn-personalizado" th:href="@{/autores/details}">
+                            Sobre Autor
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+</body>
+
+</html>

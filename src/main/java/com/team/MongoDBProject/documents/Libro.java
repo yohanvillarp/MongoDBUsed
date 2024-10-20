@@ -16,7 +16,7 @@ public record Libro(
         String idioma,
         int edicion,
         String genero,
-        double precio,
-        String descripcion
+        String descripcion,
+        boolean esDestacado
 ) {
 }
