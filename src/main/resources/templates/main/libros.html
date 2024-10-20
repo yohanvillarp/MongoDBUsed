@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Libros</title>
+    <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+    <link rel="stylesheet" th:href="@{/css/main/libros.css}">
+</head>
+<body>
+<!--Header -->
+<div th:insert="~{fragments/header :: headerFragment}"></div>
+<main>
+    <section>
+        <form class="buscador" action="javascript:void(0);" method="get" onsubmit="buscarLibros()">
+            <input type="text" id="searchInput" name="query" placeholder="Buscar libro...">
+            <button type="submit">Buscar</button>
+        </form>
+
+    </section>
+
+    <!--Contenedor de libros -->
+    <div class="Libros">
+        <div class="contenido" th:each="libro : ${libros}">
+            <h2 th:text="${libro.nombre}">Título Libro</h2>
+            <div class="imagen">
+                <img th:src="${libro.rutaPortada}" alt="${libro.nombre}">
+            </div>
+            <div class="boton">
+                <button>Ver Libro</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div>
+    <div class="BotonesFlotantes">
+        <div class="añadirBtn">
+            <a class="botonLink" th:href="@{/libros/add}">Añadir
+                libro</a>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/search/libros.js"></script>
+
+
+</body>
+</html>
+

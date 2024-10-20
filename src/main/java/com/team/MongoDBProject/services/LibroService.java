@@ -14,7 +14,13 @@ public class LibroService {
 
     public List<Libro> getLibros(){
         List<Libro> libros = libroRepository.findAll();
-        System.out.println(libros);
+            System.out.println(libros.size());
         return libros;
+    }
+    public void addLibro(Libro libro){
+        libroRepository.save(libro);
+    }
+    public List<Libro> buscarPorNombre(String query){
+        return libroRepository.findByNombreRegex(".*" + query + ".*");
     }
 }

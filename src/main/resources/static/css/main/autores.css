@@ -1,0 +1,189 @@
+* {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+   list-style: none;
+}
+
+body {
+   min-height: 100vh;
+   min-width: 350px;
+   background-color: white;
+}
+
+/*buscador*/
+.buscador {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 20px;
+}
+
+.buscador input[type="text"] {
+   padding: 10px;
+   border: 2px solid rgb(230, 75, 19);
+   border-radius: 5px;
+   font-size: 15px;
+   width: 500px;
+   transition: border-color 0.3s ease;
+}
+
+.buscador input[type="text"]:focus {
+   outline: none;
+   border-color: rgb(117, 33, 2);
+}
+
+.buscador button {
+   padding: 10px 20px;
+   background-color: rgb(230, 75, 19);
+   color: white;
+   border: none;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   margin-left: 15px;
+   transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buscador button:hover {
+   background-color: rgb(117, 33, 2);
+   transform: scale(1.05);
+}
+
+.buscador button:active {
+   transform: scale(0.90);
+}
+
+/*Boton flotante*/
+.botonLink:visited,
+.botonLink:link,
+.botonLink:active {
+   position: fixed;
+   bottom: 50px;
+   right: 50px;
+   background-color: rgb(230, 75, 19);
+   color: white;
+   border: none;
+   border-radius: 10px;
+   padding: 10px 20px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s ease-in-out;
+   text-align: center;
+}
+
+.botonLink2:visited,
+.botonLink2:link,
+.botonLink2:active {
+   position: fixed;
+   bottom: 100px;
+   right: 50px;
+   background-color: rgb(230, 75, 19);
+   color: white;
+   border: none;
+   border-radius: 10px;
+   padding: 10px 20px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s ease-in-out;
+   text-align: center;
+}
+
+.botonLink3:visited,
+.botonLink3:link,
+.botonLink3:active {
+   position: fixed;
+   bottom: 150px;
+   right: 50px;
+   background-color: rgb(230, 75, 19);
+   color: white;
+   border: none;
+   border-radius: 10px;
+   padding: 10px 20px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s ease-in-out;
+   text-align: center;
+}
+
+.añadirBtn .botonLink, .botonLink2, .botonLink3 {
+   text-decoration: none;
+}
+
+.botonLink:hover {
+   background-color: rgb(117, 33, 2);
+}
+
+.botonLink2:hover {
+   background-color: rgb(117, 33, 2);
+}
+
+.botonLink3:hover {
+   background-color: rgb(117, 33, 2);
+}
+
+.autores {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 40px;
+   padding: 20px;
+   border-radius: 10px;
+}
+
+.autores .contenido {
+   text-align: center;
+   box-sizing: border-box;
+   height: auto;
+}
+
+/* Para pantallas medianas (tablets) */
+@media (max-width: 1024px) {
+   .autores {
+       grid-template-columns: repeat(3, 1fr);
+   }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+   .autores {
+       grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+/* Para pantallas muy pequeñas (móviles pequeños) */
+@media (max-width: 480px) {
+   .autores {
+       grid-template-columns: 1fr;
+   }
+}
+
+.autores .contenido .imagen {
+   margin: 0 auto;
+}
+
+.autores .contenido .imagen img {
+   width: 250px;
+   height: 300px;
+}
+
+.autores .contenido .boton {
+   width: 100%;
+   text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+   .buscador {
+       flex-direction: column;
+   }
+
+   .buscador input[type="text"] {
+       width: 100%;
+   }
+
+   .buscador button {
+       width: 100%;
+       margin-left: 0;
+       margin-top: 10px;
+   }
+}

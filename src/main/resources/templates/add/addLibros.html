@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/add/addLibros.css}">
+</head>
+
+<body>
+<main class="main">
+
+  <div class="lado-derecho">
+    <div class="imagen">
+      <div id="imagenPreview">
+        <img id="imagenSeleccionada" src="" alt="Previsualización de la imagen" style="display:none; width: 300px;"/>
+      </div>
+    </div>
+    <div class="botones">
+      <form action="">
+        <input type="file" id="inputImagen" accept="image/*"> <br> <br>
+      </form>
+      <div class="Regresar">
+        <a href="/html/home/HomeAutor.html">Regresar</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="formulario">
+    <h1>Agregar Libro</h1>
+    <form th:action="@{/libros/registrar}" th:method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input type="text" id="isbn" th:name="isbn" required>
+      </div>
+
+      <div class="form-group">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" th:name="titulo" required>
+      </div>
+
+      <div class="form-group">
+        <label for="editorial">Editorial</label>
+        <input type="text" id="editorial" th:name="editorial" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fecha">Fecha de Publicación</label>
+        <input type="date" id="fecha" th:name="fechaPublicacion" required>
+      </div>
+
+      <div class="form-group">
+        <label for="idioma">Idioma</label>
+
+        <select id="idioma" th:name="idioma" required>
+
+          <option th:value="otros">Otros</option>
+          <option th:value="aleman">Alemán</option>
+          <option th:value="arabe">Árabe</option>
+          <option th:value="bengali">Bengalí</option>
+          <option th:value="checo">Checo</option>
+          <option th:value="danes">Danés</option>
+          <option th:value="eslovaco">Eslovaco</option>
+          <option th:value="esloveno">Esloveno</option>
+          <option th:value="espanol">Español</option>
+          <option th:value="filipino">Filipino</option>
+          <option th:value="finlandes">Finlandés</option>
+          <option th:value="frances">Francés</option>
+          <option th:value="griego">Griego</option>
+          <option th:value="hebreo">Hebreo</option>
+          <option th:value="hindi">Hindí</option>
+          <option th:value="húngaro">Húngaro</option>
+          <option th:value="indonesio">Indonesio</option>
+          <option th:value="ingles">Inglés</option>
+          <option th:value="italiano">Italiano</option>
+          <option th:value="japones">Japonés</option>
+          <option th:value="malayo">Malayo</option>
+          <option th:value="mandarin">Mandarín (Chino)</option>
+          <option th:value="neerlandes">Neerlandés</option>
+          <option th:value="noruego">Noruego</option>
+          <option th:value="persa">Persa</option>
+          <option th:value="portugues">Portugués</option>
+          <option th:value="ruso">Ruso</option>
+          <option th:value="sueco">Sueco</option>
+          <option th:value="tailandes">Tailandés</option>
+          <option th:value="turco">Turco</option>
+          <option th:value="urdu">Urdu</option>
+          <option th:value="vietnamita">Vietnamita</option>
+
+        </select>
+        <input type="text" id="idioma" th:name="idioma" required>
+      </div>
+
+      <div class="form-group">
+        <label for="edicion">Edición</label>
+        <input type="number" id="edicion" th:name="edicion" required min="1" value="1" max="50">
+      </div>
+
+      <div class="form-group">
+        <label for="genero">Género</label>
+        <input type="text" id="genero" th:name="genero" required>
+      </div>
+
+      <div class="form-group">
+        <label for="autores">Autor(es)</label>
+        <select id="autores" th:name="autor" required>
+
+          <option value="">Otros</option>
+          <input type="text"></input>
+        </select>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" th:name="descripcion" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="number" id="precio" th:name="precio" required step="0.01" min="0" value="0">
+      </div>
+
+      <div class="Enviar">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+
+  </div>
+
+
+</main>
+
+
+<footer>
+  <div class="BotonesFlotantes">
+    <div class="BtnRegresar">
+      <a class="botonLink" href="/html/home/HomeLibros.html">Regresar</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+
+  const inputImagen = document.getElementById('inputImagen');
+  const imagenSeleccionada = document.getElementById('imagenSeleccionada');
+
+
+  inputImagen.addEventListener('change', function(event) {
+      const archivo = event.target.files[0];
+
+      if (archivo) {
+          const lector = new FileReader();
+
+
+          lector.onload = function(e) {
+              imagenSeleccionada.src = e.target.result;
+              imagenSeleccionada.style.display = 'block';
+          }
+
+          lector.readAsDataURL(archivo);
+      }
+  });
+</script>
+
+<script src="/js/search/libros.js">
+</script>
+</body>
+
+</html>

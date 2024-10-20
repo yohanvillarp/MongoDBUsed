@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autor</title>
+  <link rel="stylesheet" href="autor.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/add/addAutores.css}">
+
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<div class="contenido">
+  <div class="imagen">
+    <div id="imagenPreview">
+      <img id="imagenSeleccionada" src="" alt="Previsualización de la imagen" style="display:none; width: 300px;"/>
+    </div>
+  </div>
+  <div class="botones">
+    <form action="">
+      <input type="file" id="inputImagen" accept="image/*"> <br>
+    </form>
+
+    <div class="Regresar">
+      <a href="/html/home/HomeAutor.html">Regresar</a>
+    </div>
+  </div>
+
+
+
+  <div class="formulario">
+    <h1>Agregar Autor</h1>
+    <form th:action="@{/autores/registrar}" th:method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="nombre">Nombres</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellidos</label>
+        <input type="text" id="apellido" name="apellido" required>
+      </div>
+      <div class="form-group">
+        <label for="fecha-nacimiento">Fecha de Nacimiento</label>
+        <input type="date" id="fecha-nacimiento" name="fechaNacimiento" required>
+      </div>
+      <div class="form-group">
+        <label for="nacionalidad">Nacionalidad</label>
+        <input type="text" id="nacionalidad" name="nacionalidad" required>
+      </div>
+      <div class="form-group">
+        <label for="biografia">Biografía</label>
+        <textarea id="biografia" name="biografia" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="sitio-web">Sitio Web</label>
+        <input type="url" id="sitio-web" name="sitioWeb">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+      </div>
+      <div class="Enviar">
+        <button type="submit">Enviar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+<script>
+
+  const inputImagen = document.getElementById('inputImagen');
+  const imagenSeleccionada = document.getElementById('imagenSeleccionada');
+
+
+  inputImagen.addEventListener('change', function(event) {
+      const archivo = event.target.files[0];
+
+      if (archivo) {
+          const lector = new FileReader();
+          lector.onload = function(e) {
+              imagenSeleccionada.src = e.target.result;
+              imagenSeleccionada.style.display = 'block';
+          }
+
+          lector.readAsDataURL(archivo);
+      }
+  });
+</script>
+
+</body>
+
+</html>

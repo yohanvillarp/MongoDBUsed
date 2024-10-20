@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda Avanzada</title>
+    <link rel="stylesheet" href="/css/fragments/header.css">
+    <link rel="stylesheet" th:href="@{/css/main/buscadorAvanzado.css}">
+</head>
+
+<body>
+<!--Header -->
+<div th:insert="~{fragments/header :: headerFragment}"></div>
+
+<main>
+    <section class="busqueda-avanzada-section">
+        <h1>Buscador Avanzado</h1>
+        <form class="buscador-avanzado" action="BusquedaResultado.html" method="get" target="_blank">
+            <input type="text" name="titulo" placeholder="Título">
+            <input type="text" name="autor" placeholder="Autor">
+            <input type="text" name="isbn" placeholder="ISBN">
+            <input type="text" name="editorial" placeholder="Editorial">
+            <button type="submit">Buscar</button>
+        </form>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2024 Libreria</p>
+</footer>
+</body>
+
+</html>

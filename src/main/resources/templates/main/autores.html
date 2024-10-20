@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Autores</title>
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/main/autores.css}">
+</head>
+<body>
+<!--Header -->
+<div th:insert="~{fragments/header :: headerFragment}"></div>
+<main>
+  <section>
+    <form class="buscador" action="javascript:void(0);" method="get" onsubmit="buscarAutores()">
+      <input type="text" id="searchInput" name="query" placeholder="Buscar autor...">
+      <button type="submit">Buscar</button>
+    </form>
+
+  </section>
+
+  <!--Contenedor de autores -->
+  <div class="autores">
+    <div class="contenido" th:each="autor : ${autores}">
+      <h2 th:text="${autor.nombres} + ' ' + ${autor.apellidos}">Título Autor</h2>
+      <div class="imagen">
+        <img th:src="${autor.rutaPortada}" alt="${autor.nombres}">
+      </div>
+      <div class="boton">
+        <button>Ver Autor</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${pageTitle}">Default Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+<div>
+  <div class="BotonesFlotantes">
+    <div class="añadirBtn">
+      <a class="botonLink" th:href="@{/autores/add}">Añadir
+        autor</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+
+
+
+<script>
+  function buscarAutores() {
+      const query = document.getElementById('searchInput').value;
+
+      fetch(`/autores/search?query=${query}`)
+          .then(response => response.json())
+          .then(data => {
+              const autoresDiv = document.querySelector('.autores');
+              autoresDiv.innerHTML = ''; // Limpiar los resultados anteriores
+
+              data.forEach(autor => {
+                  const contenidoDiv = document.createElement('div');
+                  contenidoDiv.className = 'contenido';
+
+                  const titulo = document.createElement('h2');
+                  titulo.textContent = autor.nombres;
+
+                  const imagenDiv = document.createElement('div');
+                  imagenDiv.className = 'imagen';
+                  const imagen = document.createElement('img');
+                  imagen.src = autor.rutaPortada;
+                  imagen.alt = autor.nombres;
+                  imagenDiv.appendChild(imagen);
+
+                  const botonDiv = document.createElement('div');
+                  botonDiv.className = 'boton';
+                  const boton = document.createElement('button');
+                  boton.textContent = 'Ver Autor';
+                  botonDiv.appendChild(boton);
+
+                  contenidoDiv.appendChild(titulo);
+                  contenidoDiv.appendChild(imagenDiv);
+                  contenidoDiv.appendChild(botonDiv);
+
+                  autoresDiv.appendChild(contenidoDiv);
+              });
+          })
+          .catch(error => console.error('Error al buscar autores:', error));
+  }
+</script>
+
+</body>
+</html>

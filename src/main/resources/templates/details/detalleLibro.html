@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Libreria</title>
+  <link rel="stylesheet" href="/css/static/navbar.css">
+  <link rel="stylesheet" href="/css/Mostrar/detalles.css">
+
+</head>
+
+<body>
+<header>
+  <nav class="navbar">
+    <div class="contenido">
+      <ul>
+        <li><a href="/html/home/HomeLibros.html">Libros</a></li>
+        <li><a href="/html/home/HomeAutor.html">Autores</a></li>
+        <li><a href="/html/Find/BusquedaAdvanced.html">Buscador Advanced</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<main>
+  <div class="Libro">
+    <div class="lado-derecho">
+      <H1>Titulo Libro</H1>
+      <div class="imagen">
+        <img src="/assets/libro.png" alt="">
+      </div>
+      <div class="botones">
+        <div class="regresar">
+          <a href="/html/Find/BusquedaAdvanced.html">Regresar</a>
+        </div> <br>
+        <form action="">
+
+          <button class="modificar" type="submit">Actualizar</button> <br>
+          <button class="eliminar" type="submit">Borrar</button> <br>
+        </form>
+      </div>
+    </div>
+
+    <div class="izquierda">
+      <div class="datosLibro">
+        <div class="formulario">
+          <h1>Libros</h1>
+          <form th:action="@{/libros/registrar}" th:method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="isbn">ISBN</label>
+              <input type="text" id="isbn" th:name="isbn" required>
+            </div>
+
+            <div class="form-group">
+              <label for="titulo">Título</label>
+              <input type="text" id="titulo" th:name="titulo" required>
+            </div>
+
+            <div class="form-group">
+              <label for="rut-portada">Ruta de Portada</label>
+              <input type="text" id="rut-portada" th:name="rutaPortada" required>
+            </div>
+
+            <div class="form-group">
+              <label for="editorial">Editorial</label>
+              <input type="text" id="editorial" th:name="editorial" required>
+            </div>
+
+            <div class="form-group">
+              <label for="fecha">Fecha de Publicación</label>
+              <input type="date" id="fecha" th:name="fechaPublicacion" required>
+            </div>
+
+            <div class="form-group">
+              <label for="stock">Stock</label>
+              <input type="number" id="stock" th:name="stock" required>
+            </div>
+
+            <div class="form-group">
+              <label for="idioma">Idioma</label>
+              <input type="text" id="idioma" th:name="idioma" required>
+            </div>
+
+            <div class="form-group">
+              <label for="edicion">Edición</label>
+              <input type="number" id="edicion" th:name="edicion" required>
+            </div>
+
+            <div class="form-group">
+              <label for="genero">Género</label>
+              <input type="text" id="genero" th:name="genero" required>
+            </div>
+
+            <div class="form-group">
+              <label for="autores">Autor(es)</label>
+              <select id="autores" th:name="autor" required>
+                <option value="">Seleccionar autor</option>
+                <option th:value="autor1">Autor 1</option>
+                <option th:value="autor2">Autor 2</option>
+                <option th:value="autor3">Autor 3</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="descripcion">Descripción</label>
+              <textarea id="descripcion" th:name="descripcion" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="precio">Precio</label>
+              <input type="number" id="precio" th:name="precio" required>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+
+</html>

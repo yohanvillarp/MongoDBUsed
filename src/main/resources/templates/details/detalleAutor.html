@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autor</title>
+  <link rel="stylesheet" href="/css/Mostrar/detallesA.css">
+  <link rel="stylesheet" href="/css/static/navbar.css">
+  <link rel="stylesheet" href="/css/Form/Frmautor.css">
+
+</head>
+
+<body>
+<header>
+  <nav class="navbar">
+    <div class="contenido">
+      <ul>
+        <li><a href="/html/home/HomeLibros.html">Libros</a></li>
+        <li><a href="#">Autores</a></li>
+        <li><a href="/html/Find/BusquedaAdvanced.html">Buscador Advanced</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="contenido">
+  <div class="lado-derecho">
+    <div class="imagen">
+      <img src="/assets/autor.jpg" alt="">
+    </div>
+    <div class="botones">
+      <form action="">
+        <input type="file"> <br>
+      </form>
+      <div class="Regresar">
+        <a href="/html/home/HomeAutor.html">Regresar</a>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="formulario">
+    <h1>Agregar Autor</h1>
+    <form th:action="@{/autores/registrar}" th:method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="nombre">Nombres</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellidos</label>
+        <input type="text" id="apellido" name="apellido" required>
+      </div>
+      <div class="form-group">
+        <label for="fecha-nacimiento">Fecha de Nacimiento</label>
+        <input type="date" id="fecha-nacimiento" name="fechaNacimiento" required>
+      </div>
+      <div class="form-group">
+        <label for="nacionalidad">Nacionalidad</label>
+        <input type="text" id="nacionalidad" name="nacionalidad" required>
+      </div>
+      <div class="form-group">
+        <label for="biografia">Biografía</label>
+        <textarea id="biografia" name="biografia" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="sitio-web">Sitio Web</label>
+        <input type="url" id="sitio-web" name="sitioWeb">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+      </div>
+
+    </form>
+  </div>
+</div>
+
+</body>
+
+</html>

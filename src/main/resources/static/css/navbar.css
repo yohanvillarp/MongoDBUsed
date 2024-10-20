@@ -1,0 +1,25 @@
+/*nav bar*/
+
+.navbar {
+    background-color: rgb(117, 33, 2);
+    border-radius: 15px;
+ }
+
+ .contenido ul {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+ }
+
+ .contenido ul li a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px;
+ }
+
+ .contenido ul li a:hover {
+    background-color: rgb(153, 50, 13);
+    border-radius: 5px;
+ }
+
